@@ -27,6 +27,9 @@
 @property (nonatomic) NSString *maxImage;
 @property (nonatomic) BOOL autoAdjustImageColors;
 
+@property (nonatomic) UIFont *labelFont;
+@property (nonatomic) UIColor *labelColor;
+
 @property (nonatomic) NSInteger currentLevel;
 
 @property (nonatomic, weak) id<SFGaugeViewDelegate> delegate;

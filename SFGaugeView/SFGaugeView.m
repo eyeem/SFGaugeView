@@ -46,6 +46,9 @@ static const CGFloat CUTOFF = 0.5;
 {
     self.opaque = NO;
     self.contentMode = UIViewContentModeRedraw;
+
+    self.labelFont = [UIFont fontWithName:@"Arial" size:0];
+    self.labelColor = self.needleColor;
     
     self.currentRadian = 0;
     [self addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)]];
@@ -91,15 +94,14 @@ static const CGFloat CUTOFF = 0.5;
 - (void) drawLabels
 {
     CGFloat fontSize = self.bounds.size.width/18;
-    UIFont* font = [UIFont fontWithName:@"Arial" size:fontSize];
-    UIColor* textColor = [self needleColor];
-    
+    UIFont* font = [self.labelFont fontWithSize:fontSize];
+    UIColor* textColor = self.labelColor;
     
     NSDictionary* stringAttrs = @{ NSFontAttributeName : font, NSForegroundColorAttributeName : textColor };
     
     if (!self.hideLevel) {
         fontSize = [self needleRadius] + 5;
-        font = [UIFont fontWithName:@"Arial" size:fontSize];
+        font = [self.labelFont fontWithSize:fontSize];
         textColor = [self bgColor];
         
         stringAttrs = @{ NSFontAttributeName : font, NSForegroundColorAttributeName : textColor };
